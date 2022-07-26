@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Forum</title>
+        <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+    </head>
+    <body>
+        <header>
+            <div class="navbar">
+                <nav class="navigation hide" id="navigation">
+                    <ul class="nav-list">
+                        <span class="close-icon" onclick="showIconBar()"><i class="material-icons-outlined">close</i></span>
+                        <li class="nav-item"><a href="{% url 'home' %}">Home</a>
+                        {% if user.is_authenticated %}
+                        </li>
+                        <li class="nav-item"><a href="{%url 'logout' %}">Logout</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item"><a href="{%url 'signin' %}">Sign in</a>
+                        </li>
+                        <li class="nav-item"><a href="{%url 'signup' %}">Sign up</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                <a href="#" class="bar-icon" id="iconBar" onclick="hideIconBar()"><i class="material-icons-outlined">menu</i></a>
+                <div class="brand">Auburn CSSE Graduate Student Forum</div>
+            </div>
+            <!--Search Box-->
+            <div class="search-box">
+                <div>
+                    <select name="" id="">
+                        <option value="everything">Everything</option>
+                        <option value="titles">Titles</option>
+                        <option value="descriptions">Descriptions</option>
+                    </select>
+                    <input type="text" name="q" id="" placeholder="search..">
+                    <button><i class="material-icons-outlined">search</i></button>
+                </div>
+            </div>
+        </header>
+        
+       {% block content %}
+       {% endblock content %}
+        <!--Forum info-->
+        <div class="forum-info">
+            <div class="chart">
+                My Forum - Stats &nbsp;<i class="material-icons-outlined">analytics</i>
+            </div> 
+            <div>
+                <span><u>5,392 </u>Posts in <u>1,210</u> Topics by <u> Users</u></span><br>
+                <span>Latest post: <b><a href="">Random post</a></b> on Dec 15 2021 By <a href="">RandomUser</a></span>.<br>
+            </div>
+        </div>
+        <footer>
+            <span>&copy;  Yue Cui | All Rights Reserved</span>
+        </footer>
+        <script src="{% static 'main.js' %}"></script>
+    </body>
+</html>
