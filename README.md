@@ -1,1 +1,2 @@
-# forum
+# Student Forum
+Developed in Django.
